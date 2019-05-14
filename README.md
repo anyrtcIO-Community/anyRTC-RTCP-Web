@@ -62,7 +62,7 @@ anyRTC-RTCP-Web实时直播，基于RTCPEngine SDK，实现快速实时直播，
 [anyRTC-Meeting-Android](https://github.com/AnyRTC/anyRTC-RTCP-Android)
 
 ## iOS版anyRTC-RTCP
-[anyRTC-RTCP-iOS](hhttps://github.com/AnyRTC/anyRTC-RTCP-iOS)
+[anyRTC-RTCP-iOS](https://github.com/AnyRTC/anyRTC-RTCP-iOS)
 
 
 ## 技术支持
