@@ -53,7 +53,7 @@ anyRTC-RTCP-Web实时直播，基于RTCPEngine SDK，实现快速实时直播，
 - H5支持chrome内核
 
 ## 扫描二维码下载iOS demo
-![RTCP](/image/RTCP.png)
+![RTCP](https://raw.githubusercontent.com/anyRTC/anyRTC-RTCP-iOS/master/image/RTCP.png)
 
 ## 扫描二维码下载Android demo
 ![RTCP](https://camo.githubusercontent.com/6855bbddab9df81958e9ea5b6d3197a5bab09085/68747470733a2f2f7777772e70677965722e636f6d2f6170702f7172636f64652f736f3661)
@@ -61,8 +61,8 @@ anyRTC-RTCP-Web实时直播，基于RTCPEngine SDK，实现快速实时直播，
 ## Android版anyRTC-RTCP
 [anyRTC-Meeting-Android](https://github.com/AnyRTC/anyRTC-RTCP-Android)
 
-## 网页版anyRTC-RTCP
-[anyRTC-RTCP-Web](https://www.anyrtc.io/demo/rtcp)
+## iOS版anyRTC-RTCP
+[anyRTC-RTCP-iOS](hhttps://github.com/AnyRTC/anyRTC-RTCP-iOS)
 
 
 ## 技术支持
