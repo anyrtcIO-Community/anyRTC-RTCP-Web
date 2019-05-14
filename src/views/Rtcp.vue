@@ -26,7 +26,10 @@
           </div>
           <div class="video info_item" v-if="isHoster == 0">
             <div class="my_video" ref="myVideoView"></div>
-            <span>本地视频窗口</span>
+            <span style="cursor: pointer;" @click="isLocalSrc = !isLocalSrc">{{isLocalSrc ? '隐藏': '显示'}}二维码</span>
+            <div class="my_video" style="height:134px; background: #fff; border: 1px solid #ddd;" v-show="isLocalSrc">
+              <img :src="localSrc" />
+            </div>
           </div>
           <!-- <div class="video info_item" v-if="screenSharing && isHoster == 0">
             <div class="my_video" ref="myScreenView"></div>
@@ -115,6 +118,8 @@ export default {
       screenSharing: false,
       $index: '',
       userid: '12345678',
+      localSrc: '',
+      isLocalSrc: false,
     }
   },
   mixins: [RtcpMixin],
@@ -181,6 +186,9 @@ export default {
       Rtcp.on("stream-published", (pubId) => {
         console.log('stream-published', pubId);
         that.addLog('info', '回调：stream-published，发布媒体流成功');
+        QRCode.toDataURL(pubId, function (err, url) {
+          that.localSrc = url;
+        });
         that.pubId = that.rtcpId = pubId;
       });
       //发布媒体辅流成功
@@ -770,7 +778,7 @@ export default {
           font-size:12px;
           color:rgba(255,255,255,1);
           text-align: center;
-          background: #000;
+          background: rgba(29,34,40, .8);
           border-radius:4px;
           z-index: 9;
           box-sizing: border-box;
