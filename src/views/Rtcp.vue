@@ -253,27 +253,28 @@ export default {
       //远程人员离开
       Rtcp.on("stream-unsubscribed", (pubId) => {
         that.addLog('info', `回调：stream-removed，远程人员离开`);
-        that.videoList.map((video, index) => {
-          if (video.pubId === pubId) {
-            that.videoList.splice(index, 1);
-          }
-        });
-        that.$nextTick(() => {
-          that.handleResize();
-        });
+        document.getElementById("video-player_" + pubId) && document.getElementById("video-player_" + pubId).remove();
+        // that.videoList.map((video, index) => {
+        //   if (video.pubId === pubId) {
+        //     that.videoList.splice(index, 1);
+        //   }
+        // });
+        // that.$nextTick(() => {
+        //   that.handleResize();
+        // });
       });
       //远程屏幕共享关闭
       Rtcp.on("exstream-unsubscribed", (pubId) => {
         that.addLog('info', `回调：exstream-removed，远程屏幕共享关闭`);
-        // document.getElementById("video-player_" + pubId) && document.getElementById("video-player_" + pubId).remove();
-        that.videoList.map((video, index) => {
-          if (video.pubId === pubId) {
-            that.videoList.splice(index, 1);
-          }
-        });
-        that.$nextTick(() => {
-          that.handleResize();
-        });
+        document.getElementById("video-player_" + pubId) && document.getElementById("video-player_" + pubId).remove();
+        // that.videoList.map((video, index) => {
+        //   if (video.pubId === pubId) {
+        //     that.videoList.splice(index, 1);
+        //   }
+        // });
+        // that.$nextTick(() => {
+        //   that.handleResize();
+        // });
       });
       // //媒体流音频大小
       // rtcp.on("audio-volume", (isRemote, pubId, audioLeval) => {
