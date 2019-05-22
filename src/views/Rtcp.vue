@@ -259,9 +259,9 @@ export default {
         //     that.videoList.splice(index, 1);
         //   }
         // });
-        // that.$nextTick(() => {
-        //   that.handleResize();
-        // });
+        that.$nextTick(() => {
+          that.handleResize();
+        });
       });
       //远程屏幕共享关闭
       Rtcp.on("exstream-unsubscribed", (pubId) => {
@@ -272,9 +272,9 @@ export default {
         //     that.videoList.splice(index, 1);
         //   }
         // });
-        // that.$nextTick(() => {
-        //   that.handleResize();
-        // });
+        that.$nextTick(() => {
+          that.handleResize();
+        });
       });
       // //媒体流音频大小
       // rtcp.on("audio-volume", (isRemote, pubId, audioLeval) => {
