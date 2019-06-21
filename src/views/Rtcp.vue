@@ -299,19 +299,15 @@ export default {
 
           Rtcp.setLocalVideoCapturer({
             video: {
-              enabled: that.videoEnable,
+              enable: that.videoEnable,
               deviceId: that.cameraDeviceId
             },
             audio: {
-              enabled: that.audioEnable,
+              enable: that.audioEnable,
               deviceId: that.micphoneDeviceId
             }
           }).then(e => {
-            // var div = document.createElement('div');
-            // div.id = "myVideo";
-            // e.video && div.appendChild(e.video);
-            // e.audio && div.appendChild(e.audio);
-            // that.$refs.myVideoView.appendChild(div);
+            e.mediaRender.id = "myVideo";
             that.$refs.myVideoView.appendChild(e.mediaRender);
             Rtcp.publish(0);
             // that.addLog('info', '方法：publish');
@@ -427,20 +423,17 @@ export default {
       let that = this;
       that.Rtcp.switchDevice({
         video: {
-          enabled: that.videoEnable,
+          enable: that.videoEnable,
           deviceId: that.cameraDeviceId
         },
         audio: {
-          enabled: that.audioEnable,
+          enable: that.audioEnable,
           deviceId: that.micphoneDeviceId
         }
       }).then(e => {
         document.getElementById("myVideo").remove();
-        let myVideo = document.createElement('div');
-        myVideo.id = "myVideo";
-        e.video && myVideo.appendChild(e.video);
-        e.audio && myVideo.appendChild(e.audio);
-        that.$refs.myVideoView.appendChild(myVideo);
+        e.mediaRender.id = "myVideo";
+        that.$refs.myVideoView.appendChild(e.mediaRender);
       }).catch(err => {
 
       });
@@ -450,20 +443,17 @@ export default {
       let that = this;
       that.Rtcp.switchDevice({
         video: {
-          enabled: that.videoEnable,
+          enable: that.videoEnable,
           deviceId: that.cameraDeviceId
         },
         audio: {
-          enabled: that.audioEnable,
+          enable: that.audioEnable,
           deviceId: that.micphoneDeviceId
         }
       }).then(e => {
         document.getElementById("myVideo").remove();
-        let myVideo = document.createElement('div');
-        myVideo.id = "myVideo";
-        e.video && myVideo.appendChild(e.video);
-        e.audio && myVideo.appendChild(e.audio);
-        that.$refs.myVideoView.appendChild(myVideo);
+        e.mediaRender.id = "myVideo";
+        that.$refs.myVideoView.appendChild(e.mediaRender);
       }).catch(err => {
 
       });
