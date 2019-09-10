@@ -178,7 +178,7 @@ export default {
       });
       that.Rtcp = Rtcp;
 
-      Rtcp.configServer(config.RTC_SERVER_URL);
+      config.RTC_SERVER_URL !== "" && Rtcp.configServer(config.RTC_SERVER_URL);
 
       that.addLog('info', '方法：initEngine，初始化');
       Rtcp.initAppInfo(config.APP_ID, config.APP_TOKEN);
