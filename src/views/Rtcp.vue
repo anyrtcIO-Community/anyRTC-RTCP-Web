@@ -12,6 +12,13 @@
             <input type="text" v-model="rtcpId" id="rtcpId" placeholder="请输入直播ID">
             <button @click="getSubscribe()">订阅</button>
           </div>
+          <!-- <div class="flex info_item isHoster2">
+            <input type="text" v-model="roomId" id="rtcpId" placeholder="请输入直播ID">
+            <button @click="getSubscribeRoom()">订阅房间</button>
+          </div>
+          <div class="flex info_item isHoster2">
+            <button @click="getUnSubscribeRoom()">取消订阅房间</button>
+          </div> -->
           <div class="flex info_item" v-if="isHoster == 0">
             <span class="inof_item_label">视频源:</span>
             <select class="ar-device_select" v-model="cameraDeviceId" @change="handleCameraChange">
@@ -115,6 +122,7 @@ export default {
       audioEnable: true,
       videoList: [],
       rtcpId: '',
+      roomId: '',
       screenSharing: false,
       $index: '',
       userid: '12345678',
@@ -172,7 +180,7 @@ export default {
     initRTCP(){
       let that = this;
       let Rtcp = new ArRTCP({
-        userId: 'user_123',
+        userId: 'user_' + parseInt(Math.random() * Math.pow(10, 6)),
         videoProfile: '',
         logLevel: 'info'
       });
@@ -183,8 +191,8 @@ export default {
       that.addLog('info', '方法：initEngine，初始化');
       Rtcp.initAppInfo(config.APP_ID, config.APP_TOKEN);
       //发布媒体流成功
-      Rtcp.on("stream-published", (pubId) => {
-        console.log('stream-published', pubId);
+      Rtcp.on("stream-published", (pubId, roomId) => {
+        console.log('stream-published', pubId, roomId);
         that.addLog('info', '回调：stream-published，发布媒体流成功');
         QRCode.toDataURL(pubId, function (err, url) {
           that.localSrc = url;
@@ -197,7 +205,7 @@ export default {
         that.addLog('info', '回调：exstream-published，发布媒体辅流成功');
         //订阅发布的辅流
         // that.pubExId = pubId;
-        that.Rtcp.subscribe(pubId);
+        // that.Rtcp.subscribe(pubId);
       });
       //停止共享
       Rtcp.on("exstream-stoped", () => {
@@ -356,6 +364,16 @@ export default {
     getSubscribe(){
       if(this.rtcpId != ''){
         this.Rtcp.subscribe(this.rtcpId);
+      }
+    },
+    getSubscribeRoom() {
+      if(this.roomId != ''){
+        this.Rtcp.listen(this.roomId);
+      }
+    },
+    getUnSubscribeRoom() {
+      if(this.roomId != ''){
+        this.Rtcp.unListen(this.roomId);
       }
     },
     //取消订阅
